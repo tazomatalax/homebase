@@ -1,2 +1,29 @@
-ipykernel
-python-dotenv
+# Core dependencies
+fastapi>=0.95.0
+uvicorn>=0.21.1
+sqlmodel>=0.0.8
+pydantic>=1.10.7
+python-jose[cryptography]>=3.3.0
+passlib[bcrypt]>=1.7.4
+python-multipart>=0.0.6
+
+# Database
+sqlalchemy>=2.0.9
+
+# Analytics and data processing
+pandas>=2.0.0
+numpy>=1.24.2
+plotly>=5.14.0
+matplotlib>=3.7.1
+
+# Testing
+pytest>=7.3.1
+httpx>=0.24.0
+
+# Code quality
+black>=23.3.0
+isort>=5.12.0
+mypy>=1.2.0
+
+# Development
+python-dotenv>=1.0.0

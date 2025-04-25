@@ -1,88 +1,128 @@
-# Data Project Template
+# PurchaseTracker
 
-<a target="_blank" href="https://datalumina.com/">
-    <img src="https://img.shields.io/badge/Datalumina-Project%20Template-2856f7" alt="Datalumina Project" />
-</a>
+A comprehensive purchase tracking application designed to help users monitor, categorize, and analyze their spending habits.
 
-## Project Template with AI Workflow Integration
-This project template combines the structure of [Cookiecutter Data Science](https://cookiecutter-data-science.drivendata.org) with best practices for collaborating with AI coding assistants. The template provides structure for both traditional data science workflows and effective AI collaboration.
+## Features
 
-## Adjusting .gitignore
+- **Purchase Tracking**: Record and manage your purchases with detailed information
+- **Categorization**: Organize purchases with a customizable category system
+- **Analytics**: Gain insights through spending trends, category breakdowns, and visual reports
+- **Data Import/Export**: Import purchases from CSV/bank statements and export data for external use
 
-Ensure you adjust the `.gitignore` file according to your project needs. For example, since this is a template, the `/data/` folder is commented out and data will not be exlucded from source control:
+## Tech Stack
 
-```plaintext
-# exclude data from source control by default
-# /data/
-```
+- **Backend**: Python with FastAPI
+- **Database**: SQLite (dev) / PostgreSQL (prod)
+- **ORM**: SQLModel (combines SQLAlchemy and Pydantic)
+- **Analytics**: Pandas, Plotly
+- **Testing**: Pytest
 
-Typically, you want to exclude this folder if it contains either sensitive data that you do not want to add to version control or large files.
+## Installation
 
-## Using AI Workflow with this Template
-This template integrates best practices for collaborating with AI coding assistants:
-
-1. **Planning**: Use `PLANNING.md` to document your project's high-level vision, architecture, and tech stack.
-2. **Task Management**: Use `TASK.md` to track tasks, backlog items, and project milestones.
-3. **AI Collaboration**: Follow the guidelines in `AI_WORKFLOW.md` for effective collaboration with AI coding assistants.
-
-For a detailed guide on working with AI coding assistants, see [AI_WORKFLOW.md](./AI_WORKFLOW.md).
-
-## Duplicating the .env File
-To set up your environment variables, you need to duplicate the `.env.example` file and rename it to `.env`. You can do this manually or using the following terminal command:
+1. Clone the repository:
 
 ```bash
-cp .env.example .env # Linux, macOS, Git Bash, WSL
-copy .env.example .env # Windows Command Prompt
+git clone https://github.com/yourusername/purchase-tracker.git
+cd purchase-tracker
 ```
 
-This command creates a copy of `.env.example` and names it `.env`, allowing you to configure your environment variables specific to your setup.
+2. Create a virtual environment:
 
-
-## Project Organization
-
-```
-├── LICENSE            <- Open-source license if one is chosen
-├── README.md          <- The top-level README for developers using this project
-├── data
-│   ├── external       <- Data from third party sources
-│   ├── interim        <- Intermediate data that has been transformed
-│   ├── processed      <- The final, canonical data sets for modeling
-│   └── raw            <- The original, immutable data dump
-│
-├── models             <- Trained and serialized models, model predictions, or model summaries
-│
-├── notebooks          <- Jupyter notebooks. Naming convention is a number (for ordering),
-│                         the creator's initials, and a short `-` delimited description, e.g.
-│                         `1.0-jqp-initial-data-exploration`
-│
-├── references         <- Data dictionaries, manuals, and all other explanatory materials
-│
-├── reports            <- Generated analysis as HTML, PDF, LaTeX, etc.
-│   └── figures        <- Generated graphics and figures to be used in reporting
-│
-├── requirements.txt   <- The requirements file for reproducing the analysis environment, e.g.
-│                         generated with `pip freeze > requirements.txt`
-│
-└── src                         <- Source code for this project
-    │
-    ├── __init__.py             <- Makes src a Python module
-    │
-    ├── config.py               <- Store useful variables and configuration
-    │
-    ├── dataset.py              <- Scripts to download or generate data
-    │
-    ├── features.py             <- Code to create features for modeling
-    │
-    │    
-    ├── modeling                
-    │   ├── __init__.py 
-    │   ├── predict.py          <- Code to run model inference with trained models          
-    │   └── train.py            <- Code to train models
-    │
-    ├── plots.py                <- Code to create visualizations 
-    │
-    └── services                <- Service classes to connect with external platforms, tools, or APIs
-        └── __init__.py 
+```bash
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
 ```
 
---------
+3. Install dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+4. Set up environment variables:
+
+```bash
+cp .env.example .env
+# Edit .env with your configuration
+```
+
+## Running the Application
+
+### Development
+
+```bash
+uvicorn src.main:app --reload
+```
+
+The API will be available at http://localhost:8000, and the interactive API documentation at http://localhost:8000/docs.
+
+### Production
+
+```bash
+uvicorn src.main:app --host 0.0.0.0 --port 8000
+```
+
+## Project Structure
+
+```
+purchase-tracker/
+├── data/               # Data storage
+├── src/                # Application source code
+│   ├── modeling/       # ML models for categorization
+│   └── services/       # Application services
+├── tests/              # Unit and integration tests
+├── PLANNING.md         # Project planning documentation
+└── README.md           # Project documentation
+```
+
+## Development
+
+### Testing
+
+Run the test suite:
+
+```bash
+pytest
+```
+
+### Code Quality
+
+Format the code using Black:
+
+```bash
+black src tests
+```
+
+## License
+
+MIT
+
+## Web Frontend
+
+A simple web frontend is now available in `src/web/`.
+
+### Features
+- Login/logout with FastAPI backend
+- Add new purchases (amount, description, date, category)
+- View list of purchases in a table
+- Responsive, modern UI (HTML/CSS/JS)
+
+### Usage
+1. Start the FastAPI backend (see above).
+2. Serve the frontend files in `src/web/` using any static file server, or configure FastAPI to serve them.
+3. Open `index.html` in your browser.
+
+### Dependencies
+- No build step required; pure HTML/CSS/JS.
+
+### Setup Example (with FastAPI static files):
+Add the following to your FastAPI app:
+
+```python
+from fastapi.staticfiles import StaticFiles
+app.mount("/static", StaticFiles(directory="src/web"), name="static")
+```
+
+Then access the frontend at `http://localhost:8000/static/index.html`.
+
+---

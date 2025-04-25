@@ -1,0 +1,78 @@
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #f7f9fa;
+    margin: 0;
+    padding: 0;
+}
+#app {
+    max-width: 800px;
+    margin: 2rem auto;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    padding: 2rem;
+}
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+header h1 {
+    margin: 0;
+    color: #2a4d69;
+}
+nav button {
+    margin-left: 1rem;
+    padding: 0.5rem 1rem;
+    background: #2a4d69;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+nav button:hover {
+    background: #4b86b4;
+}
+main section {
+    margin-bottom: 2rem;
+}
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    max-width: 350px;
+}
+input, select, button {
+    font-size: 1rem;
+    padding: 0.5rem;
+    border-radius: 4px;
+    border: 1px solid #cfd8dc;
+}
+button[type="submit"] {
+    background: #63ace5;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+button[type="submit"]:hover {
+    background: #2a4d69;
+}
+.error {
+    color: #d32f2f;
+    margin-top: 0.5rem;
+}
+#purchases-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+#purchases-table th, #purchases-table td {
+    border: 1px solid #e0e0e0;
+    padding: 0.5rem 0.75rem;
+    text-align: left;
+}
+#purchases-table th {
+    background: #f1f8fb;
+}
